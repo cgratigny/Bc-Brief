@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>BcBrief</title>
+  <%= stylesheet_link_tag "blueprint/screen", "blueprint/ie", "style" %>
+  <%= javascript_include_tag :defaults %>
+  <%= csrf_meta_tag %>
+</head>
+<body>
+	
+	<div id="container">
+		
+		<div class="guts prepend-1 prepend-top append-1">
+			
+			<div id="header">
+				<div id="logo" class="append-bottom prepend-1">Basecamp Projects</div>
+			</div>
+			
+			
+			<%= yield %>
+		</div>
+	</div>
+
+</body>
+</html>
