@@ -1,4 +1,25 @@
-#logo {
-	font-size:1.5em;
+#logo 
+{
+	font-size:2em;
+	text-align:right;
+	text-transform:uppercase;
+	letter-spacing:.2em;
+	color:#003300;
+}
+
+body
+{
+	background:#DDD;
+}
+
+#container 
+{
 	text-align:left;
+}
+
+.box {
+	padding:1em;
+	background:#FFF;
+	border:1px solid #CCC;
+	box-shadow: 1px 1px 1px #AAA;
 }
