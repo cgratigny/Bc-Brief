@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  completed: MyString
+  title: MyString
+  deadline: 2011-05-24 20:02:16
+  responsible_party_name: MyString
+
+two:
+  completed: MyString
+  title: MyString
+  deadline: 2011-05-24 20:02:16
+  responsible_party_name: MyString

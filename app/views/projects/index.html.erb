@@ -1,15 +1,36 @@
 <div class="box">
-<% @projects.each do |project| %>
-
-	<div>
-		<div class="span-30">
-			<strong>
-				<%= link_to(project.name,'https://ibethel.basecamphq.com/projects/' + project.id.to_s) %>
-			</strong>
-		</div>
-		<div class="span-30 prepend-1"><%= project.announcement %></div>
+	
+	<div class="span-30">
+		<div class="span-12">&nbsp;</div>
+		<% @milestone_presets.each do |preset| %>
+			<div class="span-4 small align-center"><%= preset %></div>
+		<% end %>
 		<br class="clear" />
 	</div>
 	
+	
+<% @projects.each do |project| %>
+
+<div class="project-row">
+	<div class="span-12 align-right">
+		<%= link_to(project.name,'https://ibethel.basecamphq.com/projects/' + project.id.to_s) %>
+	</div>
+
+		<% project.media_milestones.each do |milestone| %>
+			<div class="span-4 align-center small <%= milestone.completed == 'true' ? 'completed' : milestone.id ? 'pending' : 'not-found' %>">
+				<% if milestone.completed == 'true' %> 
+					done
+				<% elsif milestone.id %>
+					- - 
+				<% else %>
+					!!
+				<% end %>
+			</div>
+		<% end %>
+
+	<br class="clear" />
+</div>
+
 <% end %>
+
 </div>

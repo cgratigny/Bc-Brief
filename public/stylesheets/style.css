@@ -1,9 +1,9 @@
 #logo 
 {
 	font-size:2em;
-	text-align:right;
+	text-align:left;
 	text-transform:uppercase;
-	letter-spacing:.2em;
+	letter-spacing:-.05em;
 	color:#003300;
 }
 
@@ -22,4 +22,38 @@ body
 	background:#FFF;
 	border:1px solid #CCC;
 	box-shadow: 1px 1px 1px #AAA;
+}
+
+.small-box {
+
+}
+
+.project-row {
+	border-top:1px dotted #AAA;
+	padding:2px 0 0 0;
+}
+
+.completed 
+{
+	color:#336633;
+}
+
+.pending {
+	color:#AAA;
+}
+
+.not-found {
+	color:#C00;
+}
+
+.align-right {
+	text-align:right;
+}
+
+.align-left {
+	text-align:left;
+}
+
+.align-center {
+	text-align:center;
 }

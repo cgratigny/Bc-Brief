@@ -10,6 +10,46 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 0) do
+ActiveRecord::Schema.define(:version => 20110525041719) do
+
+  create_table "cache_updates", :force => true do |t|
+    t.string   "username"
+    t.datetime "updated"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "companies", :force => true do |t|
+    t.string   "name"
+    t.integer  "project_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "milestones", :force => true do |t|
+    t.string   "completed"
+    t.string   "title"
+    t.datetime "deadline"
+    t.string   "responsible_party_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "project_id"
+  end
+
+  create_table "projects", :force => true do |t|
+    t.string   "name"
+    t.text     "overview"
+    t.string   "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "bc_id"
+    t.text     "announcement"
+  end
+
+  create_table "updates", :force => true do |t|
+    t.string   "table"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end
