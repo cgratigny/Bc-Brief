@@ -1,5 +1,7 @@
 class CacheUpdate < ActiveRecord::Base
-  
+
+  default_scope :order => 'updated DESC'  
+
   def is_current
     # if we don't know when this was updated, then
     if !updated

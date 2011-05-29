@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110526070137) do
+ActiveRecord::Schema.define(:version => 20110529215240) do
 
   create_table "cache_updates", :force => true do |t|
     t.string   "username"
@@ -37,10 +37,18 @@ ActiveRecord::Schema.define(:version => 20110526070137) do
   end
 
 # Could not dump table "projects" because of following StandardError
-#   Unknown type 'bool' for column 'hide'
+#   Unknown type 'bool' for column 'hidden'
 
   create_table "updates", :force => true do |t|
     t.string   "table"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "users", :force => true do |t|
+    t.string   "email"
+    t.string   "password_hash"
+    t.string   "password_salt"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

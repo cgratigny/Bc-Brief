@@ -1,13 +1,16 @@
 BcBrief::Application.routes.draw do
   
-  devise_for :users
+  get "sessions/new"
+
+  get "users/new"
 
   root :to => "projects#index"
   match "/projects/hide/:id" => "projects#hide"  
   match "/projects/show/:id" => "projects#show"  
   match "/projects/hidden" => "projects#hidden"  
-  match "/projects/index" => "projects#index"  
-  
+  match "/projects/index" => "projects#index"
+  match "/update_project_cache" => "projects#update_cache", :as => "update_project_cache"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

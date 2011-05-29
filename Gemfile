@@ -14,10 +14,9 @@ gem 'sqlite3'
 gem 'capistrano'
 
 # Use BaseCamp gem
-gem 'basecamp'
+gem 'basecamp', "~> 0.0.6"
 
-# authentication
-gem 'devise'
+gem "bcrypt-ruby", :require => "bcrypt"
 
 # To use debugger (ruby-debug for Ruby 1.8.7+, ruby-debug19 for Ruby 1.9.2+)
 # gem 'ruby-debug'

@@ -20,19 +20,23 @@
 		<div class="guts prepend-1 prepend-top append-1">
 			
 			<div id="header">
-				
-				<div class="nav medium">
+				<div class="nav medium append-1">
 					<ul>
-						<li><%= link_to("All","/projects/index") %></li>
-						<li><%= link_to("Hidden","/projects/hidden") %></li>
+						<li><%= link_to("Active Projects","/projects/index") %></li>
+						<li><%= link_to("Hidden Projects","/projects/hidden") %></li>
 					</ul>
 				</div>
-				<div id="logo" class="append-bottom prepend-1">Basecamp Projects</div>
-				<br class="clear" />
+				<div id="logo" class="prepend-1">Basecamp Projects</div>
 			</div>
+
+			<div class="float-right small append-1">
+				<%= last_update.updated.to_s(:updated_time) %>. <%= link_to("Update Now", "update_project_cache") %>
+			</div>
+			<br class="clear" />
 			
-			
-			<%= yield %>
+			<div class="box">
+				<%= yield %>
+			</div>
 		</div>
 	</div>
 

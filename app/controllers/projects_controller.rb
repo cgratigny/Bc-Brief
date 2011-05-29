@@ -7,11 +7,18 @@ class ProjectsController < ApplicationController
     
   end
   
+  def update_cache
+    Project::update_cache('ibethel.basecamphq.com', 'cgratigny', 'Itm,Ida4sc.')
+    flash[:notice] = "Updated Projects from Basecamp."
+    redirect_to root_url
+  end
+  
   def hidden
     
     @milestone_presets = Milestone::presets
     @projects = Project.find_all_by_hidden_and_status(true,'active')
     render "index"
+    
   end
   
   def hide

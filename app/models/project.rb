@@ -1,7 +1,7 @@
 class Project < ActiveRecord::Base
   has_one :company
   has_many :milestones
-  default_scope :order => 'name ASC'  
+  default_scope :order => 'sort_order ASC'  
   validates_uniqueness_of :bc_id
   
   def media_milestones
@@ -17,7 +17,7 @@ class Project < ActiveRecord::Base
   end
   
 
-  def update_cache(url,username,password)
+  def self.update_cache(url,username,password)
 
     cache = CacheUpdate.find_or_initialize_by_username(username)
     cache.updated = Time.now
@@ -33,8 +33,9 @@ class Project < ActiveRecord::Base
       project.status = bc_project.status
 
       if !project.company
-        company = Company.new
-        company.name = bc_project.company.name
+        Company.create! do |company|
+          company.name = bc_project.company.name
+        end
         project.company = company
       end
 
