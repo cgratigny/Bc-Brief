@@ -104,6 +104,6 @@ PLATFORMS
 DEPENDENCIES
   basecamp
   capistrano
-  devise (= 1.1.rc0)
+  devise
   rails (= 3.0.7)
   sqlite3

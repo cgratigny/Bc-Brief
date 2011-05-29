@@ -1,5 +1,7 @@
 BcBrief::Application.routes.draw do
   
+  devise_for :users
+
   root :to => "projects#index"
   match "/projects/hide/:id" => "projects#hide"  
   match "/projects/show/:id" => "projects#show"  
