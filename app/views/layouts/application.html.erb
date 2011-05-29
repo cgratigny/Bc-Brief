@@ -10,10 +10,25 @@
 	
 	<div id="container">
 		
+	 <% if flash[:notice] %>
+	      <p class="notice" id="topNotice"><%= flash[:notice] %></p>
+	    <% end %>
+	    <% if flash[:error] %>
+	      <p class="error" id="topError"><%= flash[:error] %></p>
+	 <% end %>
+		
 		<div class="guts prepend-1 prepend-top append-1">
 			
 			<div id="header">
+				
+				<div class="nav medium">
+					<ul>
+						<li><%= link_to("All","/projects/index") %></li>
+						<li><%= link_to("Hidden","/projects/hidden") %></li>
+					</ul>
+				</div>
 				<div id="logo" class="append-bottom prepend-1">Basecamp Projects</div>
+				<br class="clear" />
 			</div>
 			
 			

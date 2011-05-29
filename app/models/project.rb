@@ -1,14 +1,14 @@
 class Project < ActiveRecord::Base
   has_one :company
   has_many :milestones
+  default_scope :order => 'name ASC'  
+  validates_uniqueness_of :bc_id
   
   def media_milestones
     
-    presets = ["All Information is Collected", "Graphics Are Completed", "Editing Finishes Media", "Product Created on P.O.S.", "Launch Banners/Marketing", "Product Launched on Webstore"]
-    
     filtered_milestones = Array.new
     
-    presets.each do |preset|
+    Milestone::presets.each do |preset|
       filtered_milestones << Milestone.find_or_initialize_by_project_id_and_title(id,preset)
     end
     
@@ -20,12 +20,8 @@ class Project < ActiveRecord::Base
   def update_cache(url,username,password)
 
     cache = CacheUpdate.find_or_initialize_by_username(username)
-    if cache.is_current
-        return
-    else
-      cache.updated = Time.now
-      cache.save
-    end
+    cache.updated = Time.now
+    cache.save
     
     # connect to basecamp and find all of the projects
     Basecamp.establish_connection!(url,username,password,true)

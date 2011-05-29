@@ -1,6 +1,10 @@
 BcBrief::Application.routes.draw do
   
   root :to => "projects#index"
+  match "/projects/hide/:id" => "projects#hide"  
+  match "/projects/show/:id" => "projects#show"  
+  match "/projects/hidden" => "projects#hidden"  
+  match "/projects/index" => "projects#index"  
   
   # The priority is based upon order of creation:
   # first created -> highest priority.
