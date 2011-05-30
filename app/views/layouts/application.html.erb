@@ -22,19 +22,26 @@
 			<div id="header">
 				<div class="nav medium append-1">
 					<ul>
-						<li><%= link_to("Active Projects","/projects/index") %></li>
-						<li><%= link_to("Hidden Projects","/projects/hidden") %></li>
+						<% if current_user %>
+							<li><%= link_to("Active Projects","/projects/index") %></li>
+							<li><%= link_to("Hidden Projects","/projects/hidden") %></li>
+							<li><%= link_to "Log Out",log_out_path %></li>
+						<% else %>
+							<li><%= link_to "Log In",log_in_path %> or <%= link_to "Sign Up",sign_up_path %></li>
+						<% end %>
 					</ul>
 				</div>
 				<div id="logo" class="prepend-1">Basecamp Projects</div>
 			</div>
 
-			<div class="float-right small append-1">
-				<% if last_update %>
-					<%= last_update.updated.to_s(:updated_time) %>. 
-				<% end %>
-				<%= link_to("Update Now", "/update_project_cache") %>
-			</div>
+			<% if current_user %>
+				<div class="float-right small append-1">
+					<% if last_update %>
+						<%= last_update.updated.to_s(:updated_time) %>. 
+					<% end %>
+					<%= link_to("Update Now", "/update_project_cache") %>
+				</div>
+			<% end %>
 			<br class="clear" />
 			
 			<div class="box">

@@ -1,9 +1,11 @@
 BcBrief::Application.routes.draw do
   
-  get "sessions/new"
-
-  get "users/new"
-
+  get "log_out" => "sessions#destroy", :as => "log_out"
+  get "log_in" => "sessions#new", :as => "log_in"
+  get "sign_up" => "users#new", :as => "sign_up"
+  resources :users
+  resources :sessions
+  
   root :to => "projects#index"
   match "/projects/hide/:id" => "projects#hide"  
   match "/projects/show/:id" => "projects#show"  
@@ -12,6 +14,7 @@ BcBrief::Application.routes.draw do
   match "/update_project_cache" => "projects#update_cache", :as => "update_project_cache"
 
   resources :projects
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

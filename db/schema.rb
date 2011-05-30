@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110530000652) do
+ActiveRecord::Schema.define(:version => 20110530065929) do
 
   create_table "cache_updates", :force => true do |t|
     t.string   "username"
@@ -39,6 +39,13 @@ ActiveRecord::Schema.define(:version => 20110530000652) do
 # Could not dump table "projects" because of following StandardError
 #   Unknown type 'bool' for column 'hidden'
 
+  create_table "toys", :force => true do |t|
+    t.string   "name"
+    t.string   "age"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "updates", :force => true do |t|
     t.string   "table"
     t.datetime "created_at"
@@ -51,6 +58,10 @@ ActiveRecord::Schema.define(:version => 20110530000652) do
     t.string   "password_salt"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "bc_api_key"
+    t.string   "bc_url"
+    t.string   "basecamp_url"
+    t.string   "basecamp_api_key"
   end
 
 end

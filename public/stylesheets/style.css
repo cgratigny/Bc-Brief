@@ -33,15 +33,6 @@ body a {
 
 }
 
-.project-row {
-	border-top:1px dotted #AAA;
-	padding:2px 0 0 0;
-}
-
-.project-row:hover {
-	background:#FFFFCC;
-}
-
 .completed 
 {
 	color:#336633;
@@ -77,6 +68,7 @@ body a {
 	margin:auto;
 	border-bottom-right-radius: 5px;
 	border-bottom-left-radius: 5px;
+	background:#99CC99;
 }
 
 .nav ul {
@@ -88,4 +80,34 @@ body a {
 .nav ul li {
 	display:inline;
 	padding:5px;
+}
+
+li.project
+{
+	clear:both;
+}
+
+#projects li 
+{
+	padding:.2em;
+	list-style:none;
+	border-bottom:1px dotted #EEE;
+}
+
+#projects li:hover {
+	background:#FFE;
+}
+
+#projects li ul
+{
+	margin-left:25em;
+}
+
+#projects li ul li 
+{
+	margin-top:-3em;
+	width:17em;
+	display:block;
+	float:left;
+	border:none;
 }

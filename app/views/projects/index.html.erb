@@ -1,23 +1,32 @@
-	<div class="span-30">
-		<div class="span-11">&nbsp;</div>
-		<% @milestone_presets.each do |preset| %>
-			<div class="span-4 small align-center"><%= preset %></div>
-		<% end %>
-		<br class="clear" />
-	</div>
+<div class="span-30">
+	<div class="span-7">&nbsp;</div>
+	<% @milestone_presets.each do |preset| %>
+	<div class="span-4 small align-center"><%= preset %></div>
+	<% end %>
+	<br class="clear" />
+</div>
 	
 	
+<ul id="projects" class="projects">
 <% @projects.each do |project| %>
 
-<div class="project-row">
+	<%= content_tag_for :li, project do %>
+		#<%= project.priority %> . <%= project.name %>
 
-	<div class="span-11 align-right">
-		<%= link_to(project.name,'https://ibethel.basecamphq.com/projects/' + project.id.to_s) %>
-		<br /><span class="small"><%= project.company.name %></span>
-	</div>
-
+			<br />
+			<span class="small"><%= project.company.name %> . 
+				<%= link_to 'edit', edit_project_path(project) %> .
+				<% if project.hidden %>
+					<%= link_to('un-hide','/projects/show/' + project.id.to_s) %> .
+				<% else %>
+					<%= link_to('hide','/projects/hide/' + project.id.to_s) %> .
+				<% end %>
+				<%= link_to 'basecamp' , 'https://ibethel.basecamphq.com/projects/' + project.bc_id.to_s, :target=>"_blank" %>
+			</span>
+		
+		<ul>
 		<% project.media_milestones.each do |milestone| %>
-			<div class="span-4 align-center small <%= milestone.completed == 'true' ? 'completed' : milestone.id ? 'pending' : 'not-found' %>">
+			<li class="small <%= milestone.completed == 'true' ? 'completed' : milestone.id ? 'pending' : 'not-found' %>">
 				<% if milestone.completed == 'true' %> 
 					done
 				<% elsif milestone.id %>
@@ -25,20 +34,13 @@
 				<% else %>
 					!!
 				<% end %>
-			</div>
+			</li>
+		<% end %>
+		</ul>
+
+		
+
 		<% end %>
 
-		<div class="span-1 small">
-			<% if project.hidden %>
-				<%= link_to('show','/projects/show/' + project.id.to_s) %>
-			<% else %>
-				<%= link_to('hide','/projects/hide/' + project.id.to_s) %>
-			<% end %>
-			<%= link_to 'edit', edit_project_path(project) %>
-		</div>
-
-	<br class="clear" />
-
-</div>
-
 <% end %>
+</ul>

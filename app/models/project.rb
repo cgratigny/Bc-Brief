@@ -1,7 +1,8 @@
 class Project < ActiveRecord::Base
+  attr_accessor :title
   has_one :company
   has_many :milestones
-  # default_scope :order => 'priority ASC'  
+  default_scope :order => 'priority ASC'  
   validates_uniqueness_of :bc_id
 
   def media_milestones
@@ -17,14 +18,14 @@ class Project < ActiveRecord::Base
   end
 
 
-  def self.update_cache(url,username,password)
+  def self.update_cache(url,api_key)
 
-    cache = CacheUpdate.find_or_initialize_by_username(username)
+    cache = CacheUpdate.find_or_initialize_by_username(api_key)
     cache.updated = Time.now
     cache.save
 
     # connect to basecamp and find all of the projects
-    Basecamp.establish_connection!(url,username,password,true)
+    Basecamp.establish_connection!(url,api_key,'',true)
     Basecamp::Project.find(:all).each do |bc_project|
 
       project = Project.find_or_initialize_by_bc_id(bc_project.id)
