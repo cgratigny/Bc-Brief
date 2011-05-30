@@ -3,7 +3,7 @@
 <head>
   <title>Basecamp Projects</title>
   <%= stylesheet_link_tag "blueprint/screen", "blueprint/ie", "style" %>
-  <%= javascript_include_tag :defaults %>
+  <%= javascript_include_tag 'jquery', 'jquery-ui', 'rails', 'application' %>
   <%= csrf_meta_tag %>
 </head>
 <body>
@@ -30,7 +30,10 @@
 			</div>
 
 			<div class="float-right small append-1">
-				<%= last_update.updated.to_s(:updated_time) %>. <%= link_to("Update Now", "update_project_cache") %>
+				<% if last_update %>
+					<%= last_update.updated.to_s(:updated_time) %>. 
+				<% end %>
+				<%= link_to("Update Now", "/update_project_cache") %>
 			</div>
 			<br class="clear" />
 			

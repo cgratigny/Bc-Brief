@@ -11,6 +11,8 @@ BcBrief::Application.routes.draw do
   match "/projects/index" => "projects#index"
   match "/update_project_cache" => "projects#update_cache", :as => "update_project_cache"
 
+  resources :projects
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
